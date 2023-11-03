@@ -1,5 +1,5 @@
 # Analyzing Science Articles: Gene Identification In Brain Tumors
-**Author: Julia Christensen**
+**Author: Julia C.**
 
 **Warning: The information presented in this website is an on going senior research project, and the information will be pieriodically updated.**
 
