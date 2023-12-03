@@ -16,6 +16,37 @@ Studying and researching brain tumors is important because they are serious, lif
 
  Studying all tumors' biological, genetic, or mechanical factors is essential to understand how they behave or grow, spread, and react to other tissues in the human body. It is important to understand the molecular mechanisms of brain cancerous tumors to help improve diagnosis and treatment to help decrease the disease's mortality [6]. Changes in genes, called mutations, can lead to malformation of proteins that cannot perform their duties as they are meant to, leading to genetic disorders or even diseases like cancer [4]. Studying tumor genes and associated genes will help researchers understand what makes a tumor different from normal tissue. If they find what causes the tumor, they can potentially create more effective treatments that will target the cause of the tumor and save lives. For example, take a specific type of primary brain tumor, which is a tumor that originates in the brain and does not spread from another part of the body called glioblastoma multiforme (GBM), which is more common, for it is invasive and malignant, where prognosis or the effect of the disease on the patient and survival rates are poor and makes up about 70% of glioma malignancies [8]. It being the leading cause of death in cancer patients of various ages, from children to adults, makes it crucial for researchers to study brain tumors, especially malignant ones, to help develop treatments to reduce the mortality rate.
 
+## Code and Results
+```python
+# Step 1: Read the text file and extract ID numbers
+file_name = 'Gene and Diseases proper pmids.txt'
+id_num = []
+
+with open(file_name, 'r') as file:
+    for line in file:
+        line = line.strip()
+        if line:
+            id_num.append(line)
+            
+# Step 2: Create a set to store the ID 
+#     numbers for quick uniqueness checks
+id_set = set()
+duplicate_ids = []
+
+# Step 3: Check for duplicates
+for id_number in id_num:
+    if id_number in id_set:
+        duplicate_ids.append(id_number)
+    else:
+        id_set.add(id_number)
+# Output
+if not duplicate_ids:
+    print("No duplicates found.")
+else:
+    print("Duplicates:")
+    for id in duplicate_ids:
+        print(id)
+```
 
 ## References
 - [1]	C.-H. Wei, A. Allot, R. Leaman, and Z. Lu, “PubTator central: automated concept annotation for biomedical full text articles,” Nucleic Acids Res., vol. 47, no. W1, pp. W587–W593, Jul. 2019, doi: 10.1093/nar/gkz389.
