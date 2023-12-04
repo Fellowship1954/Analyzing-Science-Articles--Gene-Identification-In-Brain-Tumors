@@ -8,6 +8,8 @@
 ## *Objective*
 The objective of the project is to identify genes associated with brain tumors, providing insight into genetic factors linked to brain tumor development and prognosis through mentions in biological article's and their abstracts.
 
+## Based on Senior Research Paper
+Here is the link to the paper: 
 
 ## *Background On The Data Resource and Brain Tumors*
 PubTator Central, or PTC, is a free online resource that provides bio information using PubMed articles. PTC is a system that highlights six biomedical concepts mentioned in PubMed article abstracts, which are summaries of research articles [1]. PubMed is a literature-based resource where scientific articles and other resources can be found. Still, it is just one of many resource systems in the National Library of Medicine: National Center for Biotechnology Information (NCBI) government website. There are well over 30 million pieces of biomedical literature that PubTator can access, and there are various categories under biomedical, with brain tumors being one [1]. The point of this tool is to help researchers in many ways, like making it easier to identify genes, diseases, chemicals, and other biomedical concepts to help researchers analyze important information in various numbers or research articles and find related work on biological topics quickly. It helps provide data that researchers can use data mining techniques to analyze and understand more on the data. PubTator will be the system where data will be obtained for this project, for it contains research article abstracts on studies done regarding brain tumors. 
@@ -16,7 +18,7 @@ Studying and researching brain tumors is important because they are serious, lif
 
  Studying all tumors' biological, genetic, or mechanical factors is essential to understand how they behave or grow, spread, and react to other tissues in the human body. It is important to understand the molecular mechanisms of brain cancerous tumors to help improve diagnosis and treatment to help decrease the disease's mortality [6]. Changes in genes, called mutations, can lead to malformation of proteins that cannot perform their duties as they are meant to, leading to genetic disorders or even diseases like cancer [4]. Studying tumor genes and associated genes will help researchers understand what makes a tumor different from normal tissue. If they find what causes the tumor, they can potentially create more effective treatments that will target the cause of the tumor and save lives. For example, take a specific type of primary brain tumor, which is a tumor that originates in the brain and does not spread from another part of the body called glioblastoma multiforme (GBM), which is more common, for it is invasive and malignant, where prognosis or the effect of the disease on the patient and survival rates are poor and makes up about 70% of glioma malignancies [8]. It being the leading cause of death in cancer patients of various ages, from children to adults, makes it crucial for researchers to study brain tumors, especially malignant ones, to help develop treatments to reduce the mortality rate.
 
-## Code and Results
+## Code Described in the Methodology Section in the Paper
 ```python
 # Step 1: Read the text file and extract ID numbers
 file_name = 'Gene and Diseases proper pmids.txt'
@@ -47,6 +49,10 @@ else:
     for id in duplicate_ids:
         print(id)
 ```
+## Results
+In this section lays the results of the experiment, remember the objective of the experiment was to identify genes associated with brain tumors, providing insight into genetic factors linked to brain tumor development and prognosis through mentions in biological article's and their abstracts. 
+
+
 
 ## References
 - [1]	C.-H. Wei, A. Allot, R. Leaman, and Z. Lu, “PubTator central: automated concept annotation for biomedical full text articles,” Nucleic Acids Res., vol. 47, no. W1, pp. W587–W593, Jul. 2019, doi: 10.1093/nar/gkz389.
