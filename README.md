@@ -52,7 +52,7 @@ else:
 ## Results
 In this section lays the results of the experiment, remember the objective of the experiment was to identify genes associated with brain tumors, providing insight into genetic factors linked to brain tumor development and prognosis through mentions in biological article's and their abstracts. 
 
-[Complete Frequency Table for Abstacts](file:///C:/Users/gchri/OneDrive/Documents/School/Eastern/Fall%20semester%202023/Senior%20Research/For%20github/full_abstract_table.html)
+[Complete Frequency Table for Abstacts](For github/full_abstract_table.html)
 
 ![Top 10 Gene Names for Abstracts](image-2.png)
 
