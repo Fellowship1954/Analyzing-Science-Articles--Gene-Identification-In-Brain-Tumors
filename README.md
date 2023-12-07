@@ -54,13 +54,25 @@ In this section lays the results of the experiment, remember the objective of th
 
 [Complete Frequency Table for Abstacts](For github/full_abstract_table.html)
 
-![Top 10 Gene Names for Abstracts](image-2.png)
+[Complete Frequency Table for Full-Text](For github/full_full-text_table.html)
+
+[Complete Frequency Table Total](For github/full_total_table.html)
+
+![Top 10 Gene Names for Abstracts](Top10_Ab_BarG.png)
+
+![Top 10 Gene Names for Full-Text](Top10_FT_BarG.png)
+
+![Top 10 Gene Names for Total](Top10_Total_BarG.png)
+
+![Word Clouds](WordCloud_AB.png)
+![Word Clouds](WordCloud_FT.png)
+![Word Clouds](WordCloud_Total.png)
 
 
 ## References
 - [1]	C.-H. Wei, A. Allot, R. Leaman, and Z. Lu, “PubTator central: automated concept annotation for biomedical full text articles,” Nucleic Acids Res., vol. 47, no. W1, pp. W587–W593, Jul. 2019, doi: 10.1093/nar/gkz389.
 
-- [2]	L. M. DeAngelis, “Brain Tumors | NEJM,” The New England Journal of Medicine. Accessed: Oct. 03, 2023. [Online]. Available: https://www.nejm.org/doi/full/10.1056/NEJM200101113440207
+> [2]	L. M. DeAngelis, “Brain Tumors | NEJM,” The New England Journal of Medicine. Accessed: Oct. 03, 2023. [Online]. Available: https://www.nejm.org/doi/full/10.1056/NEJM200101113440207
 
 - [3]	“What causes brain tumours?,” The Brain Tumour Charity. Accessed: Oct. 12, 2023. [Online]. Available: https://www.thebraintumourcharity.org/brain-tumour-diagnosis-treatment/how-brain-tumours-are-diagnosed/brain-tumour-biology/what-causes-brain-tumours/
 
