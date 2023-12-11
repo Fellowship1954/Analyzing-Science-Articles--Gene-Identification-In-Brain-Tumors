@@ -23,7 +23,9 @@ The project aimed to identify genes associated with brain tumors, providing insi
 ## Results
 In this section lays the results of the experiment, remember the objective of the experiment was to identify genes associated with brain tumors, providing insight into genetic factors linked to brain tumor development and prognosis through mentions in biological article's and their abstracts. 
 
-[Complete Frequency Table Total](For github/full_total_table.html)
+For the experiment, 1,100 samples were examined, and around a total of 736 gene names were referenced. However, split between abstracts and full-text around 656 genes were mentioned in the abstracts and 136 in full-text. **Table 1** is the complete frequency table [^1] that contains all the gene names referenced in order from highest frequency (*the most mentioned*) to the lowest and at the top displaying the total number of genes in the table and the amount of genes that are unique (*only mentioned once*).
+[^1]: It is the combination of abstract and full-text data together.
+**Table 1:** [Complete Frequency Table Total](For github/full_total_table.html)
 
 ![Top 10 Gene Names for Total](For github/Top10_Total_BarG.png)
 
