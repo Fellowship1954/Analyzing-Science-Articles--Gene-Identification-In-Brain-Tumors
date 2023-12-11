@@ -11,6 +11,12 @@ The objective of the project is to identify genes associated with brain tumors, 
 ## Based on Senior Research Paper
 Here is the link to the paper: [Senior Research Paper](For github/GenesAssociatedwithBrainTumors.docx.html)
 
+##### Table of Contents
+[Headers](#headers)
+[Emphasis](#emphasis)
+...snip...
+<a name="headers"/>
+
 ## *Background On The Data Resource and Brain Tumors*
 Brain tumors cause serious, life-threatening diseases, for they are abnormal cell growths [2]. There are several factors that can lead to  abnormal cell growth, and researchers are looking at genetic and molecular changes in a person's cell to understand why there was a change in cells that caused them to start growing abnormally, which in turn caused the tumors [3]. Genes are the building blocks of life; they are segments of DNA that determine how an organism looks, behaves, and survives in environments or places they are in [4]. Diagnosing brain tumors can be done through various tests, one being an MRI scan with a gadolinium enhancement that examines the brain, looking for any indications of abnormalities [2]. Brain tumors can either be benign or malignant. Benign tumors stay put and do not travel to other parts of the body, unlike malignant cancerous tumors that can spread (metastasize) from one part of the body to another [5]. Since benign tumors do not disperse, they are just classified by their look, size, and area in which it is located; however, malignant tumors can be further classified into specific types or histologic (main) categories, which will then sometimes have subcategories which will be placed into a type of grade [5]. Grade I or II are low-grade tumors that grow slowly and are less likely to cause nearby tissues to become tumors, and higher-grade tumors, grade III or IV, will grow quickly and cause other tissues to become tumors [5]. The likely hood on developing a primary cancerous brain tumor is less than 1%, however it is estimated that around 5,000 children under 20 will be diagnosed with it in the year 2023 in the United States [6]. The leading cause of death in children and adolescence is cancer, and brain tumors being one of the top 3 cancers [1]. There are so many different types of brain tumors; however, they are hard to diagnose, for they have symptoms like headaches and nausea or vomiting, which other diseases can also cause. These symptoms are why brain tumors in children are often delayed in diagnosis or misdiagnosed, for it could be other ailments [7].  
 
@@ -23,16 +29,34 @@ The project aimed to identify genes associated with brain tumors, providing insi
 ## Results
 In this section lays the results of the experiment, remember the objective of the experiment was to identify genes associated with brain tumors, providing insight into genetic factors linked to brain tumor development and prognosis through mentions in biological article's and their abstracts. 
 
-For the experiment, 1,100 samples were examined, and around a total of 736 gene names were referenced. However, split between abstracts and full-text around 656 genes were mentioned in the abstracts and 136 in full-text. **Table 1** is the complete frequency table [^1] that contains all the gene names referenced in order from highest frequency (*the most mentioned*) to the lowest and at the top displaying the total number of genes in the table and the amount of genes that are unique (*only mentioned once*).
+For the experiment, 1,100 samples were examined, and around a total of 736 gene names were referenced. However, split between abstracts and full-text around 656 genes were mentioned in the abstracts and 136 in full-text. **Table 1** is the complete frequency table ([^1]) that contains all the gene names referenced in order from highest frequency (*the most mentioned*) to the lowest and at the top displaying the total number of genes in the table and the amount of genes that are unique (*only mentioned once*).
 [^1]: It is the combination of abstract and full-text data together.
-**Table 1:** [Complete Frequency Table Total](For github/full_total_table.html)
+**Table 1:** [Complete Frequency Table Total](For github/full_total_table.html) ([^2])
+**Table 1:** The complete frequency table containing the combination of abstracts and full-text date.
 
-![Top 10 Gene Names for Total](For github/Top10_Total_BarG.png)
+[^2]: In some visualizations the title will reference to Total or TOTAL, which just means the total gene names data (*combination of abstracts and full-text*).
 
-[Complete Frequency Table for Abstacts](For github/full_abstract_table.html)
+**Table 2** displays the top 10 gene names from **Table 1**. Both tables show there were two genes that were the most mentioned, BRAF and MGMT. For a better view of the most mentioned genes overall, a bar graph (see **Graph 1**) was made, and it is a great visualization of BRAF and MGMT being referenced 33 times. The first 5 gene names mentioned were all in the thirties, with the first and second (BRAF and MGMT) having the same number, 33, and the third and fourth (IDH and EGFR) having the frequency of 31. 
+**Table 2:** [Top 10 Total Gene Names](For github/Complete_Top10_FreqTable.png)
+**Table 2:** Displays the top 10 most frequently mentioned genes.
 
-![Top 10 Gene Names for Abstracts](For github/Top10_Ab_BarG.png)
+**Graph 1:**![Top 10 Gene Names for Total](For github/Top10_Total_BarG.png)
+**Graph 1:** The graph displays the top 10 most frequenly mentioned genes shown in **Table 2**.
 
+**Graph 1** displays that the first 4 gene names are tide in first and second place. It also shows that the number of mentions from the first rank genes names is almost 2 times more than the last in the top 10, VEGF.
+
+However, when abstracts and full-text are separated the gene names most mentioned changes. **Table 3** displays the complete table of all the abstracts data, with the gene names referenced in order from highest frequency (*the most mentioned*) to the lowest and at the top displaying the total number of genes in the table and the amount of genes that are unique (*only mentioned once*).
+**Table 3:** [Complete Frequency Table for Abstacts](For github/full_abstract_table.html)
+**Table 3:** The complete frequency table containing the abstracts data.
+
+**Table 4:** [Top 10 Abstracts Frequency Table](For github/Abstracts_Top10_FreqTable.png)
+**Table 4:** Displays the top 10 most frequently mentioned gene names in abstract data alone.
+
+**Table 4** displays the top 10 gene names from **Table 3**. For abstracts, GFAP was mentioned 29 times and is ahead of BRAF by only 2. For a better visualization that GFAP was the most mentioned in the abstract data a bar graph (**Graph 2**) was made. 
+**Graph 2:**![Top 10 Gene Names for Abstracts](For github/Top10_Ab_BarG.png)
+**Graph 2:** The graph displays the top 10 most frequently mention genes shown in **Table 4**.
+
+Additionally, in full-text alone, the MGMT was the most referenced with being mentioned only 8 times (see **Table 5 and 6**). 
 [Complete Frequency Table for Full-Text](For github/full_full-text_table.html)
 
 ![Top 10 Gene Names for Full-Text](For github/Top10_FT_BarG.png)
