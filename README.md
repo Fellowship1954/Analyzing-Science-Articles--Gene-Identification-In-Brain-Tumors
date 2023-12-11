@@ -19,6 +19,13 @@ Here is the link to the paper: [Senior Research Paper](For github/GenesAssociate
     - [Discussions: Reflection and Limitations](#reflection-and-limitations)
     - [Discussions: Last-Remarks](#last-remarks)
 - [Code and Description of the Code](#code-described-in-the-methodology-section-in-the-paper)
+    - [Gathering PMIDs](#dealing-with-pmids)
+    - [Gathering Information](#using-the-pmids-to-gather-proper-information)
+    - [Gene Names into Lists](#placing-gene-names-into-lists)
+    - [Analyzing the data](#analyzing-the-data)
+        - [Frequency Tables](#frequency-tables)
+        - [Bar Graphs](#bar-graphs)
+        - [Word Clouds](#word-clouds)
 - [References](#references)
 <a name="headers"/>
 
@@ -34,12 +41,12 @@ The project aimed to identify genes associated with brain tumors, providing insi
 ## Results
 In this section lays the results of the experiment, remember the objective of the experiment was to identify genes associated with brain tumors, providing insight into genetic factors linked to brain tumor development and prognosis through mentions in biological article's and their abstracts. 
 
-For the experiment, 1,100 samples were examined, and around a total of 736 gene names were referenced. However, split between abstracts and full-text around 656 genes were mentioned in the abstracts and 136 in full-text. **Table 1** is the complete frequency table ([^1]) that contains all the gene names referenced in order from highest frequency (*the most mentioned*) to the lowest and at the top displaying the total number of genes in the table and the amount of genes that are unique (*only mentioned once*).
-[^1]: It is the combination of abstract and full-text data together.
-**Table 1:** [Complete Frequency Table Total](For github/full_total_table.html) ([^2])
+For the experiment, 1,100 samples were examined, and around a total of 736 gene names were referenced. However, split between abstracts and full-text around 656 genes were mentioned in the abstracts and 136 in full-text. **Table 1** is the complete frequency table ([Footnote: 1]) that contains all the gene names referenced in order from highest frequency (*the most mentioned*) to the lowest and at the top displaying the total number of genes in the table and the amount of genes that are unique (*only mentioned once*).
+[Footnote: 1]: It is the combination of abstract and full-text data together.
+**Table 1:** [Complete Frequency Table Total](For github/full_total_table.html) ([Footnote: 2])
 **Table 1:** The complete frequency table containing the combination of abstracts and full-text date.
 
-[^2]: In some visualizations the title will reference to Total or TOTAL, which just means the total gene names data (*combination of abstracts and full-text*).
+[Footnote: 2]: In some visualizations the title will reference to Total or TOTAL, which just means the total gene names data (*combination of abstracts and full-text*).
 
 **Table 2** displays the top 10 gene names from **Table 1**. Both tables show there were two genes that were the most mentioned, BRAF and MGMT. For a better view of the most mentioned genes overall, a bar graph (see **Graph 1**) was made, and it is a great visualization of BRAF and MGMT being referenced 33 times. The first 5 gene names mentioned were all in the thirties, with the first and second (BRAF and MGMT) having the same number, 33, and the third and fourth (IDH and EGFR) having the frequency of 31. 
 **Table 2:** [Top 10 Total Gene Names](For github/Complete_Top10_FreqTable.png)
@@ -105,6 +112,15 @@ Overall, the experiment was successful, showing that BRAF and MGMT were the most
 
 
 ## Code Described in the Methodology Section in the Paper
+In this section, discussion about the code and what the code used to obtain the results will be here. **If you are trying to repeat the experiment the PMIDs used are in the "For Github" folder with the names of:**
+    - Gene and Diseases proper pmids.txt -> Contains the over 8,000 rest of the PMIDs not used in the experiment if you would like to use more samples in your experiment
+- Make an excel worksheet that contains the PMIDs in abstracts and full-text
+    - In the experiment Abstracts and full text.xlsx was made
+
+### Dealing with PMIDs
+In this subsection, created code to look through the list of samples of PMIDs to check for duplicates and separated them into abstracts and full-text. (**The processed used, but menstioned in the REFLECTION AND LIMITAIONS part of Discussions, there was an easier way.**)
+
+Down below is looking through the text file that contains the 1,100 PMID samples, checking for any duplicates. **If there are duplicates delete one of them and collect more PMIDs if needed.**
 ```python
 # Step 1: Read the text file and extract ID numbers
 file_name = 'Gene and Diseases proper pmids.txt'
@@ -134,6 +150,740 @@ else:
     print("Duplicates:")
     for id in duplicate_ids:
         print(id)
+```
+
+The code down below is counting the number of PMIDs to make sure there are 1,100 of them.
+```python
+# Step 1: Read the text file and extract ID numbers
+file_name = 'Gene and Diseases proper pmids.txt'
+id_num = []
+
+with open(file_name, 'r') as file:
+    for line in file:
+        line = line.strip()
+        if line:
+            id_num.append(line)
+            
+# Step 2: Count the number of samples
+total_count_sample = len(id_num)
+
+# Output
+print(f"The total number of samples for this experiment: {total_count_sample}")
+```
+Down below was how the abstracts and full-text PMIDs were separated. Copy and paste a batch of the PMIDs from the 1,100 samples file to the main_list variable and the full-text PMIDs into the full_text variable. **See paper [Paper](#based-on-senior-research-paper) for how the researcher use the code.**
+```python
+# Function to find IDs that do not match between two lists
+def find_non_matching_ids(list1, list2):
+    # Convert the lists to sets for faster comparison
+    set1 = set(list1)
+    set2 = set(list2)
+
+    # Find the IDs that are in list1 but not in list2
+    non_matching_ids = set1 - set2
+
+    return list(non_matching_ids)
+
+# Example lists of IDs
+main_list = []
+full_text = []
+
+print("Length of main list", len(main_list))
+
+print("Length of full-text", len(full_text))
+
+# Find non-matching IDs
+non_matching_ids = find_non_matching_ids(main_list, full_text)
+print("length of non_matching_ids", len(non_matching_ids))
+
+# Display the non-matching IDs
+print("Non-matching IDs:", non_matching_ids)
+
+```
+**Example:**
+```python
+# Function to find IDs that do not match between two lists
+def find_non_matching_ids(list1, list2):
+    # Convert the lists to sets for faster comparison
+    set1 = set(list1)
+    set2 = set(list2)
+
+    # Find the IDs that are in list1 but not in list2
+    non_matching_ids = set1 - set2
+
+    return list(non_matching_ids)
+
+# Example lists of IDs
+main_list = [31090175, 
+33476393, 
+33972919, 
+34570449, 
+36717507,
+7848917,
+11837749, 
+25464144]
+full_text = [25464144, 31090175, 33476393, 33972919, 34570449, 36717507]
+
+print("Length of main list", len(main_list))
+
+print("Length of full-text", len(full_text))
+
+# Find non-matching IDs
+non_matching_ids = find_non_matching_ids(main_list, full_text)
+print("length of non_matching_ids", len(non_matching_ids))
+
+# Display the non-matching IDs
+print("Non-matching IDs:", non_matching_ids)
+```
+
+Checking the abstracts text file, looking at how many samples are in it and for duplicates.
+*Sample Length*
+```python
+# Step 1: Read the text file and extract ID numbers
+file_name = 'Pmids_Abstracts.txt'
+id_num = []
+
+with open(file_name, 'r') as file:
+    for line in file:
+        line = line.strip()
+        if line:
+            id_num.append(line)
+            
+# Step 2: Count the number of samples
+ab_count_sample = len(id_num)
+
+# Output
+print(f"The total number of samples for this experiment: {ab_count_sample}")
+```
+*Duplicate Check*
+```python
+# Step 1: Read the text file and extract ID numbers
+file_name = 'Pmids_Abstracts.txt'
+id_num = []
+
+with open(file_name, 'r') as file:
+    for line in file:
+        line = line.strip()
+        if line:
+            id_num.append(line)
+            
+# Step 2: Create a set to store the ID numbers for quick uniqueness checks
+id_set = set()
+duplicate_ids = []
+
+# Step 3: Check for duplicates
+for id_number in id_num:
+    if id_number in id_set:
+        duplicate_ids.append(id_number)
+    else:
+        id_set.add(id_number)
+# Output
+if not duplicate_ids:
+    print("No duplicates found.")
+else:
+    print("Duplicates:")
+    for id in duplicate_ids:
+        print(id)
+```
+
+Checking the full-text text file, looking at how many samples are in it and for duplicates.
+*Sample Length*
+```python
+# Looking at length of full-text list
+
+# Step 1: Read the text file and extract ID numbers
+file_name = 'Pmcids_FullText.txt'
+id_num = []
+
+with open(file_name, 'r') as file:
+    for line in file:
+        line = line.strip()
+        if line:
+            id_num.append(line)
+            
+# Step 2: Count the number of samples
+full_count_sample = len(id_num)
+
+# Output
+print(f"The total number of samples for this experiment: {full_count_sample}")
+```
+*Duplicat Check*
+```python
+# Step 1: Read the text file and extract ID numbers
+file_name = 'Pmcids_FullText.txt'
+id_num = []
+
+with open(file_name, 'r') as file:
+    for line in file:
+        line = line.strip()
+        if line:
+            id_num.append(line)
+            
+# Step 2: Create a set to store the ID numbers for quick uniqueness checks
+id_set = set()
+duplicate_ids = []
+
+# Step 3: Check for duplicates
+for id_number in id_num:
+    if id_number in id_set:
+        duplicate_ids.append(id_number)
+    else:
+        id_set.add(id_number)
+# Output
+if not duplicate_ids:
+    print("No duplicates found.")
+else:
+    print("Duplicates:")
+    for id in duplicate_ids:
+        print(id)
+```
+
+The code down below checks to make sure the PMIDs in both the abstract and full-text are not in both.
+```python
+# Step 1: Read the contents of the first text file and extract numbers
+file_path1 = 'Pmids_Abstracts.txt'
+numbers1 = set()
+
+with open(file_path1, 'r') as file1:
+    for line in file1:
+        line = line.strip()
+        if line:  # Ignore empty lines
+            numbers1.add(line)
+
+# Step 2: Read the contents of the second text file and extract numbers
+file_path2 = 'Pmcids_FullText.txt'
+numbers2 = set()
+
+with open(file_path2, 'r') as file2:
+    for line in file2:
+        line = line.strip()
+        if line:  # Ignore empty lines
+            numbers2.add(line)
+
+# Step 3: Compare the two sets to find duplicates
+duplicates = numbers1.intersection(numbers2)
+
+# Check if there are duplicates (Output)
+if not duplicates:
+    print("No duplicates found.")
+else:
+    print("Duplicates found:")
+    for duplicate in duplicates:
+        print(duplicate)
+```
+
+Making sure that the length of abstracts and full-text equals the total amount of samples: 1,100.
+
+```python
+# do the numbers add up?
+print(total_count_sample)
+
+match = ab_count_sample + full_count_sample
+print(match)
+
+total_count_sample == match
+```
+### Using the PMIDs to Gather Proper Information
+Down below the code used the PubTator API to create JSON code and places the information into an excel file. **The code is only gathering:**
+    - full-text article or abstract ID number
+    - gathering type "Gene"
+    - the identifier of the gene name
+    - the gene name
+
+**For abstracts** and placing the information into another tab on the worksheet alsong with highlighting the PMIDs that were checked, to help visualy keep track at what the code looked at.
+```python
+import requests
+import json
+from openpyxl import load_workbook
+from openpyxl.styles import PatternFill
+import pandas as pd
+
+def modify_url():
+    workbook = load_workbook('Abstracts and full text.xlsx')
+    read_worksheet = workbook['abstracts']
+    max_row = read_worksheet.max_row
+    chunk_size = 8
+    
+    yellow_fill = PatternFill(start_color='FFFF00', end_color='FFFF00', fill_type='solid')
+    
+    gene_info_list = []  # Collect gene info into a list
+    
+    for start_row in range(1, max_row, chunk_size):
+        end_row = min(start_row + chunk_size - 1, max_row)
+        
+        pmid_list = []
+        for row_num in range(start_row, end_row + 1):
+            cell_value = read_worksheet.cell(row=row_num, column=1).value
+            pmid_list.append(cell_value)
+            read_worksheet.cell(row=row_num, column=1).fill = yellow_fill
+        
+        gene_info = extract_geneInfo(pmid_list)
+        gene_info_list.extend(gene_info)  # Append gene info to the list
+    
+    update_worksheet(gene_info_list, workbook)  # Write all gene info at once
+
+def extract_geneInfo(pmid_list):
+    base_url = "https://www.ncbi.nlm.nih.gov/research/pubtator-api/publications/export/biocjson"
+    concepts = "gene"
+    gene_info_list = []
+    
+    # Fetch data in batches of 100 PMIDs
+    for i in range(0, len(pmid_list), 100):
+        pmids = ','.join(str(p) for p in pmid_list[i:i+100])
+        mod_url = f"{base_url}?pmids={pmids}&concepts={concepts}"
+        response = requests.get(mod_url)
+        
+        if response.status_code == 200:
+            json_objects = response.text.split('\n')
+            for json_obj in json_objects:
+                if json_obj.strip():
+                    data = json.loads(json_obj)
+                    _id = data.get('_id')
+                    for passage in data['passages']:
+                        for ann in passage['annotations']:
+                            infons = ann.get('infons', {})
+                            if infons.get('type') == 'Gene':
+                                identifier = infons.get('identifier')
+                                gene_type = infons.get('type')
+                                gene_name = ann.get('text')
+                                gene_details = {"_id": _id, "identifier": identifier, "type": gene_type, "gene_name": gene_name}
+                                gene_info_list.append(gene_details)
+        else:
+            print("Error:", response.status_code)
+            print(response.text) 
+    
+    return gene_info_list
+
+#update the worksheet
+def update_worksheet(gene_info, workbook):
+    df = pd.DataFrame(gene_info, columns=['_id', 'identifier', 'type', 'gene_name'])
+    with pd.ExcelWriter('Abstracts and full text.xlsx', engine='openpyxl') as writer:
+        writer.book = workbook
+        writer.sheets = {ws.title: ws for ws in workbook.worksheets}
+        df.to_excel(writer, sheet_name='AB_Gene_Names', index=False, startrow=1, header=False)
+
+modify_url()
+```
+
+**For full-text** and placing the information into another tab on the worksheet alsong with highlighting the PMIDs that were checked, to help visualy keep track at what the code looked at.
+
+```python
+import requests
+import json
+from openpyxl import load_workbook
+from openpyxl.styles import PatternFill
+import pandas as pd
+
+def modify_url():
+    workbook = load_workbook('Abstracts and full text.xlsx')
+    read_worksheet = workbook['FT']
+    max_row = read_worksheet.max_row
+    
+    blue_fill = PatternFill(start_color='0000FF', end_color='0000FF', fill_type='solid')
+    
+    gene_info_list = []  # Collect gene info into a list
+    
+    for row_num in range(1, max_row + 1):
+        cell_value = read_worksheet.cell(row=row_num, column=1).value
+        read_worksheet.cell(row=row_num, column=1).fill = blue_fill
+        
+        if cell_value is not None:
+            pmid_list = [cell_value]
+            gene_info = extract_geneInfo(pmid_list)
+            gene_info_list.extend(gene_info)  # Append gene info to the list
+    
+    update_worksheet(gene_info_list, workbook)  # Write all gene info at once
+
+def extract_geneInfo(pmid_list):
+    # Remaining code remains the same...
+    base_url = "https://www.ncbi.nlm.nih.gov/research/pubtator-api/publications/export/biocjson"
+    concepts = "gene"
+    gene_info_list = []
+    
+    # Fetch data in batches of 100 PMIDs
+    for i in range(0, len(pmid_list), 100):
+        pmids = ','.join(str(p) for p in pmid_list[i:i+100])
+        mod_url = f"{base_url}?pmids={pmids}&concepts={concepts}"
+        response = requests.get(mod_url)
+        
+        if response.status_code == 200:
+            json_objects = response.text.split('\n')
+            for json_obj in json_objects:
+                if json_obj.strip():
+                    data = json.loads(json_obj)
+                    _id = data.get('_id')
+                    for passage in data['passages']:
+                        for ann in passage['annotations']:
+                            infons = ann.get('infons', {})
+                            if infons.get('type') == 'Gene':
+                                identifier = infons.get('identifier')
+                                gene_type = infons.get('type')
+                                gene_name = ann.get('text')
+                                gene_details = {"_id": _id, "identifier": identifier, "type": gene_type, "gene_name": gene_name}
+                                gene_info_list.append(gene_details)
+        else:
+            print("Error:", response.status_code)
+            print(response.text)  
+            
+    return gene_info_list  # Return the collected gene information
+
+# Update the worksheet
+def update_worksheet(gene_info, workbook):
+    df = pd.DataFrame(gene_info, columns=['_id', 'identifier', 'type', 'gene_name'])
+    with pd.ExcelWriter('Abstracts and full text.xlsx', engine='openpyxl', mode='a') as writer:
+        writer.book = workbook
+        writer.sheets = {ws.title: ws for ws in workbook.worksheets}
+        df.to_excel(writer, sheet_name='fullT_Gene_Names', index=False, startrow=1, header=False)
+
+modify_url()
+```
+
+**For Abstracts** gathering the gene names. The code organizes the gene names and helps collect all the unique names mentioned in each abstracts.
+```python
+import openpyxl
+from openpyxl.styles import PatternFill
+
+# Load the Excel workbook
+file_path = 'Abstracts and full text.xlsx'
+worksheet_name = 'AB_Gene_Names'  # Replace 'Sheet1' with the name of your worksheet
+workbook = openpyxl.load_workbook(file_path)
+worksheet = workbook[worksheet_name]
+
+# Create an empty dictionary to store unique identifiers with gene names
+unique_geneIDs = {}
+
+# Iterate through the rows
+for index, row in enumerate(worksheet.iter_rows(min_row=2, values_only=True), start=2):
+    pmid = row[0]  # PMID is in the first column (column A)
+    identifier = row[1]  # Identifier is in the second column (column B)
+    gene_name = row[3]  # Gene Name is in the fourth column (column D)
+
+    # Combine PMID and Identifier to create a unique identifier key to dictionary
+    unique_identifier = f"{pmid}_{identifier}"
+
+    # Check if the unique identifier is already in the dictionary
+    if unique_identifier not in unique_geneIDs:
+        unique_geneIDs[unique_identifier] = [gene_name.upper()]  # Initialize a list with the capitalized gene name
+    else:
+        # If the key exists, append the capitalized gene name to the existing list
+        unique_geneIDs[unique_identifier].append(gene_name.upper())
+
+    # Highlight the current row with yellow fill color
+    for cell in worksheet[index]:
+        cell.fill = PatternFill(start_color='FFFF00', end_color='FFFF00', fill_type='solid')
+
+# Sort the gene names within each dictionary section
+for identifier, gene_names in unique_geneIDs.items():
+    unique_geneIDs[identifier] = sorted(set(gene_names), key=lambda x: (len(x), x))
+
+# Display the unique identifiers with their corresponding gene names
+for identifier, gene_names in unique_geneIDs.items():
+    print(f"Unique Identifier: {identifier}, Gene Names: {', '.join(gene_names)}")
+    
+# Save the modified workbook (overwriting the original file)
+workbook.save(file_path)
+
+# Close the workbook
+workbook.close()
+```
+To make sure that the unique_identifiers dictionary contains information.
+```python
+print(unique_identifiers)
+```
+
+**For Full-Text** gathering the gene names. The code organizes the gene names and helps collect all the unique names mentioned in each full-text article.
+```python
+import openpyxl
+from openpyxl.styles import PatternFill
+
+# Load the Excel workbook
+file_path = 'Abstracts and full text.xlsx'
+worksheet_name = 'fullT_Gene_Names'  # Replace 'Sheet1' with the name of your worksheet
+workbook = openpyxl.load_workbook(file_path)
+worksheet = workbook[worksheet_name]
+
+# Create an empty dictionary to store unique identifiers with gene names
+unique_geneIDs_2 = {}
+
+# Iterate through the rows
+for index, row in enumerate(worksheet.iter_rows(min_row=2, values_only=True), start=2):
+    pmid_FT = row[0]  # PMID is in the first column (column A)
+    identifier_FT = row[1]  # Identifier is in the second column (column B)
+    gene_name_FT = row[3]  # Gene Name is in the fourth column (column D)
+
+    # Combine PMID and Identifier to create a unique identifier key
+    unique_identifier = f"{pmid_FT}_{identifier_FT}"
+
+    # Check if the unique identifier is already in the dictionary
+    if unique_identifier not in unique_geneIDs_2:
+        unique_geneIDs_2[unique_identifier] = [gene_name_FT.upper()]  # Initialize a list with the capitalized gene name
+    else:
+        # If the key exists, append the capitalized gene name to the existing list
+        unique_geneIDs_2[unique_identifier].append(gene_name_FT.upper())
+
+    # Highlight the current row with blue fill color
+    for cell in worksheet[index]:
+        cell.fill = PatternFill(start_color='0000FF', end_color='0000FF', fill_type='solid')
+
+# Sort the gene names within each dictionary section
+for identifier_FT, gene_names_FT in unique_geneIDs_2.items():
+    unique_geneIDs_2[identifier_FT] = sorted(set(gene_names_FT), key=lambda x: (len(x), x))
+
+# Display the unique identifiers with their corresponding gene names
+for identifier_FT, gene_names_FT in unique_geneIDs_2.items():
+    print(f"Unique Identifier: {identifier_FT}, Gene Names: {', '.join(gene_names_FT)}")
+
+# Save the modified workbook (overwriting the original file)
+workbook.save(file_path)
+
+# Close the workbook
+workbook.close()
+```
+
+To make sure that the unique_geneIDs_2 dictionary contains information.
+```python
+print(unique_geneIDs_2)
+```
+
+### Placing Gene Names into Lists
+Placing the gathered information from the steps above into lists, so the data could be analyzed.
+```python
+# Abstracts List
+ab_geneNames = [next(iter(gene_name), None) for gene_name in unique_geneIDs.values()]
+print(ab_geneNames)
+
+print()
+
+# Full-Text List
+ft_geneNames = [next(iter(gene_name), None) for gene_name in unique_geneIDs_2.values()]
+
+print(ft_geneNames)
+
+# Gene names in total (Abstract + Full-text)
+geneNames_TOTAL = ab_geneNames + ft_geneNames
+```
+Testing to make sure that the total list contains all the information from both the abstracts and full-text.
+```python
+# checking the lengths of the lists
+print("length of abstracts list:", len(ab_geneNames))
+print("Length of full-text list:", len(ft_geneNames))
+print()
+print("Do the numbers of total match to the combinination of the abstacts and full-text: ", (len(ab_geneNames) + len(ft_geneNames)) == len(geneNames_TOTAL))
+print()
+print("total gene names length:", len(geneNames_TOTAL))
+print(geneNames_TOTAL)
+```
+
+### Analyzing the Data
+In this subsection is the code that created the tables, bar graphs and word clouds.
+
+#### Frequency Tables
+**For Abstracts**
+The complete table.
+```python
+# Full Frequency Table for Abstracts
+import pandas as pd
+
+# Create a DataFrame and count number of times of each gene name
+ab_df = pd.DataFrame({'Gene Names': ab_geneNames})
+ab_freq_table = ab_df['Gene Names'].value_counts().reset_index()
+ab_freq_table.columns = ['Gene Names', 'Frequency']
+
+# Display the frequency table
+pd.set_option('display.max_rows', None)
+print(ab_freq_table)
+```
+
+The top 10 table.
+```python
+# Top 10 Frequency Table for Abstracts
+top_10 = 10
+top_ab_geneNames = ab_freq_table.head(top_10)
+print(top_ab_geneNames)
+```
+
+Looking at how many gene names frequency is 1.
+```python
+# Number of Frequencies that are unique (only have 1) for Full-text
+gene_freq1_Abstract = ab_freq_table[ab_freq_table['Frequency'] == 1]
+num_geneFreq1_Abstract = len(gene_freq1_Abstract)
+print(num_geneFreq1_Abstract)
+```
+
+**For Full-Text**
+The complete table.
+```python
+# Full Frequency Table of Full Text
+ft_df = pd.DataFrame({'Gene Names': ft_geneNames})
+ft_freq_table = ft_df['Gene Names'].value_counts().reset_index()
+ft_freq_table.columns = ['Gene Names', 'Frequency']
+
+# Display the frequency table
+pd.set_option('display.max_rows', None)
+print(ft_freq_table)
+```
+
+The top 10 table.
+```python
+# Top 10 frequency table for Full text
+top_ten = 10
+top_ft_geneNames = ft_freq_table.head(top_ten)
+print(top_ft_geneNames)
+```
+
+Looking at how many gene names frequency is 1.
+```python
+# Number of Frequencies that are unique (only have 1) for Full-text
+gene_freq1_FullText = ft_freq_table[ft_freq_table['Frequency'] == 1]
+num_geneFreq1_FullText = len(gene_freq1_FullText)
+print(num_geneFreq1_FullText)
+```
+
+**For Total (abstract and full-text)**
+The complete table.
+```python
+# Full Frequency Table for Total Amount of Gene Names
+TOTAL_df = pd.DataFrame({'Gene Names': geneNames_TOTAL})
+TOTAL_freq_table = TOTAL_df['Gene Names'].value_counts().reset_index()
+TOTAL_freq_table.columns = ['Gene Names', 'Frequency']
+
+# Display the frequency table
+pd.set_option('display.max_rows', None)
+print(TOTAL_freq_table)
+```
+
+The top 10 table.
+```python
+# Top 10 Gene Names for TOTAL
+top_ten = 10
+top_TOTAL_geneNames = TOTAL_freq_table.head(top_ten)
+print(top_TOTAL_geneNames)
+```
+
+Bottom 10 table.
+```python
+# least frequent for TOTAL
+totalGeneName = len(TOTAL_freq_table)
+
+# The number of genes you want to retrieve
+bottom_ten = 10
+
+# calculate the stating index
+start_index = max(0, totalGeneName - bottom_ten)
+
+# Output the bottom ten
+bottomTOTAL_geneNames = TOTAL_freq_table.tail(totalGeneName-start_index)
+print(bottomTOTAL_geneNames)
+```
+
+Looking at how many gene names frequency is 1.
+```python
+# Number of Frequencies that are unique (only have 1) for TOTAL
+gene_freq1 = TOTAL_freq_table[TOTAL_freq_table['Frequency'] == 1]
+num_geneFreq1 = len(gene_freq1)
+print(num_geneFreq1)
+```
+
+#### Bar Graphs
+**For Abstracts**
+```python
+# Top Ten Abstracts
+import matplotlib.pyplot as plt
+import random
+
+# Generate random colors for each bar
+num_bars = len(top_ab_geneNames)
+random_colors = ['#' + '%06X' % random.randint(0, 0xFFFFFF) for _ in range(num_bars)]
+
+# Plotting the bar graph
+plt.figure(figsize=(8, 8))
+plt.bar(top_ab_geneNames['Gene Names'], top_ab_geneNames['Frequency'], color=random_colors)
+plt.xlabel('Gene Names')
+plt.ylabel('Frequency')
+plt.title('Top 10 Abstracts: Gene Names Frequency')
+plt.xticks(rotation=90)
+plt.tight_layout()
+plt.show()
+```
+
+**For Full-Text**
+```python
+# Top Ten Full Abstracts
+import matplotlib.pyplot as plt
+
+# Plotting the bar graph
+plt.figure(figsize=(8, 8))
+plt.bar(top_ft_geneNames['Gene Names'], top_ft_geneNames['Frequency'], color=random_colors)
+plt.xlabel('Gene Names')
+plt.ylabel('Frequency')
+plt.title('Top 10 Full-Text: Gene Names Frequency')
+plt.xticks(rotation=90)
+plt.tight_layout()
+plt.show()
+```
+
+**For Total Gene Names**
+```python
+# Top Ten Total Gene Names
+import matplotlib.pyplot as plt
+
+# Plotting the bar graph
+plt.figure(figsize=(8, 8))
+plt.bar(top_TOTAL_geneNames['Gene Names'], top_TOTAL_geneNames['Frequency'], color=random_colors)
+plt.xlabel('Gene Names')
+plt.ylabel('Frequency')
+plt.title('Top 10 TOTAL: Gene Names Frequency')
+plt.xticks(rotation=90)
+plt.tight_layout()
+plt.show()
+```
+
+#### Word Clouds
+**For Abstracts**
+```python
+# Abstracts
+from wordcloud import WordCloud
+
+all_ab_geneNames = ' '.join(filter(None, ab_geneNames))
+
+ab_wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_ab_geneNames)
+
+plt.figure(figsize=(10,8))
+plt.imshow(ab_wordcloud, interpolation='bilinear')
+plt.axis('off')
+plt.title('Abstract Word Cloud of Gene Names')
+plt.show()
+```
+
+**For Full-Text**
+```python
+# Full Text
+from wordcloud import WordCloud
+
+all_ft_geneNames = ' '.join(filter(None, ft_geneNames))
+
+ft_wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_ft_geneNames)
+
+plt.figure(figsize=(10,8))
+plt.imshow(ft_wordcloud, interpolation='bilinear')
+plt.axis('off')
+plt.title('Full Text Word Cloud of Gene Names')
+plt.show()
+```
+
+**For Total Gene Names**
+```python
+# Total
+from wordcloud import WordCloud
+
+all_geneNames_TOTAL = ' '.join(filter(None, geneNames_TOTAL))
+
+geneNames_TOTAL_wordcloud = WordCloud(width=800, height=400, background_color='white').generate(all_geneNames_TOTAL)
+
+plt.figure(figsize=(10,8))
+plt.imshow(geneNames_TOTAL_wordcloud, interpolation='bilinear')
+plt.axis('off')
+plt.title('Overall Total of Gene Names')
+plt.show()
 ```
 
 ## References
