@@ -114,7 +114,6 @@ Overall, the experiment was successful, showing that BRAF and MGMT were the most
 In this section, discussion about the code and what the code used to obtain the results will be here. **If you are trying to repeat the experiment the PMIDs used are in the "For Github" folder with the names of:**
 > Gene and Diseases proper pmids.txt: Contains the over 8,000 rest of the PMIDs not used in the experiment if you would like to use more samples in your experiment
 > Make an excel worksheet that contains the PMIDs in abstracts and full-text
-    > In the experiment Abstracts and full text.xlsx was made
 
 ### Dealing with PMIDs
 In this subsection, created code to look through the list of samples of PMIDs to check for duplicates and separated them into abstracts and full-text. (**The processed used, but menstioned in the REFLECTION AND LIMITAIONS part of Discussions, there was an easier way.**)
@@ -389,10 +388,10 @@ total_count_sample == match
 ### Using the PMIDs to Gather Proper Information
 Down below the code used the PubTator API to create JSON code and places the information into an excel file. 
 **The code is only gathering:**
-    > full-text article or abstract ID number
-    > gathering type "Gene"
-    > the identifier of the gene name
-    > the gene name
+    - full-text article or abstract ID number
+    - gathering type "Gene"
+    - the identifier of the gene name
+    - the gene name
 
 **For abstracts** and placing the information into another tab on the worksheet alsong with highlighting the PMIDs that were checked, to help visualy keep track at what the code looked at.
 ```python
