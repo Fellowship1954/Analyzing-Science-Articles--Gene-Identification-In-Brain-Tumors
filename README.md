@@ -12,8 +12,10 @@ The objective of the project is to identify genes associated with brain tumors, 
 Here is the link to the paper: [Senior Research Paper](For github/GenesAssociatedwithBrainTumors.docx.html)
 
 ## Table of Contents
-[Background](#headers)
-...snip...
+- [Background](#background-on-the-data-resource-and-brain-tumors)
+- [Results](#results)
+- [Code and Description of the Code](#code-described-in-the-methodology-section-in-the-paper)
+- [References](#references)
 <a name="headers"/>
 
 ## *Background On The Data Resource and Brain Tumors*
