@@ -1,7 +1,6 @@
 # Analyzing Science Articles: Identifying Genes Associated with Brain Tumors
 **Author: Julia C.**
 
-**Warning: The information presented in this website is an on going senior research project, and the information will be pieriodically updated.**
 
 ![Brain Tumor](https://th.bing.com/th/id/R.70beee177fe41452e199ef763fbb2866?rik=kaByp%2baW8pO2nw&riu=http%3a%2f%2fwww.10faq.com%2fassets%2fimg%2fbrain-tumor-symptoms-05.jpg&ehk=9Rz3Egl0RsDaWTvQsq2iGM1aZBW5Blg%2fAOh%2ffLgPzcc%3d&risl=&pid=ImgRaw&r=0)
 
@@ -113,7 +112,8 @@ Overall, the experiment was successful, showing that BRAF and MGMT were the most
 
 ## Code Described in the Methodology Section in the Paper
 In this section, discussion about the code and what the code used to obtain the results will be here. **If you are trying to repeat the experiment the PMIDs used are in the "For Github" folder with the names of:**
-    - Gene and Diseases proper pmids.txt -> Contains the over 8,000 rest of the PMIDs not used in the experiment if you would like to use more samples in your experiment
+   
+    - Gene and Diseases proper pmids.txt: Contains the over 8,000 rest of the PMIDs not used in the experiment if you would like to use more samples in your experiment
 - Make an excel worksheet that contains the PMIDs in abstracts and full-text
     - In the experiment Abstracts and full text.xlsx was made
 
@@ -170,7 +170,7 @@ total_count_sample = len(id_num)
 # Output
 print(f"The total number of samples for this experiment: {total_count_sample}")
 ```
-Down below was how the abstracts and full-text PMIDs were separated. Copy and paste a batch of the PMIDs from the 1,100 samples file to the main_list variable and the full-text PMIDs into the full_text variable. **See paper [Paper](#based-on-senior-research-paper) for how the researcher use the code.**
+Down below was how the abstracts and full-text PMIDs were separated. Copy and paste a batch of the PMIDs from the 1,100 samples file to the main_list variable and the full-text PMIDs into the full_text variable. **See paper [Senior Research Paper](For github/GenesAssociatedwithBrainTumors.docx.html) for how the researcher use the code.**
 ```python
 # Function to find IDs that do not match between two lists
 def find_non_matching_ids(list1, list2):
@@ -199,6 +199,8 @@ print("length of non_matching_ids", len(non_matching_ids))
 print("Non-matching IDs:", non_matching_ids)
 
 ```
+
+Here is an example on how the code above would work when placing the PMIDs into it.
 **Example:**
 ```python
 # Function to find IDs that do not match between two lists
@@ -236,6 +238,7 @@ print("Non-matching IDs:", non_matching_ids)
 ```
 
 Checking the abstracts text file, looking at how many samples are in it and for duplicates.
+
 *Sample Length*
 ```python
 # Step 1: Read the text file and extract ID numbers
@@ -286,6 +289,7 @@ else:
 ```
 
 Checking the full-text text file, looking at how many samples are in it and for duplicates.
+
 *Sample Length*
 ```python
 # Looking at length of full-text list
@@ -384,6 +388,7 @@ total_count_sample == match
 ```
 ### Using the PMIDs to Gather Proper Information
 Down below the code used the PubTator API to create JSON code and places the information into an excel file. **The code is only gathering:**
+    
     - full-text article or abstract ID number
     - gathering type "Gene"
     - the identifier of the gene name
@@ -677,7 +682,9 @@ print(geneNames_TOTAL)
 In this subsection is the code that created the tables, bar graphs and word clouds.
 
 #### Frequency Tables
+
 **For Abstracts**
+
 The complete table.
 ```python
 # Full Frequency Table for Abstracts
@@ -710,6 +717,7 @@ print(num_geneFreq1_Abstract)
 ```
 
 **For Full-Text**
+
 The complete table.
 ```python
 # Full Frequency Table of Full Text
@@ -739,6 +747,7 @@ print(num_geneFreq1_FullText)
 ```
 
 **For Total (abstract and full-text)**
+
 The complete table.
 ```python
 # Full Frequency Table for Total Amount of Gene Names
@@ -784,6 +793,7 @@ print(num_geneFreq1)
 ```
 
 #### Bar Graphs
+
 **For Abstracts**
 ```python
 # Top Ten Abstracts
@@ -838,6 +848,7 @@ plt.show()
 ```
 
 #### Word Clouds
+
 **For Abstracts**
 ```python
 # Abstracts
