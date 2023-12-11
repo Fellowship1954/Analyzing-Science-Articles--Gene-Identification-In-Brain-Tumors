@@ -388,6 +388,7 @@ total_count_sample == match
 ### Using the PMIDs to Gather Proper Information
 Down below the code used the PubTator API to create JSON code and places the information into an excel file. 
 **The code is only gathering:**
+    
     - full-text article or abstract ID number
     - gathering type "Gene"
     - the identifier of the gene name
