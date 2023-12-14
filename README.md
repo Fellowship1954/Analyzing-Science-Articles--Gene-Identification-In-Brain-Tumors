@@ -10,6 +10,11 @@ The objective of the project is to identify genes associated with brain tumors, 
 ## Based on Senior Research Paper
 Here is the link to the paper: [Senior Research Paper](For github/GenesAssociatedwithBrainTumors.docx.html)
 
+## PMID and Gene Name Data
+Here is the link to the excel worksheet used for the experiment containing the data. The tab labled "abstracts" contains all the abstract PMIDs and the tab "FT" is full-text PMIDs.
+The code then created the other two tabs, which contain all the nessecary information for the experiment, each in there respective tabs.
+Link: [Excel Worksheet for Abstracts and Full-Text Information](For github/Abstracts and full text.htm)
+
 ## Table of Contents
 - [Background](#background-on-the-data-resource-and-brain-tumors)
 - [Results](#results)
